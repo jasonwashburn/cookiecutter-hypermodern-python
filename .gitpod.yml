@@ -1,0 +1,14 @@
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - init: |
+      python3 -m pip install --upgrade pip
+      pip install pipx && curl -sSL https://install.python-poetry.org | python3 -
+      pipx install nox
+      pipx inject nox nox-poetry
+      pipx ensurepath
+    command: echo 'start script'
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
