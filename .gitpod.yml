@@ -8,11 +8,13 @@ tasks:
       pipx install nox
       pipx inject nox nox-poetry
       pipx ensurepath
+      source ~/.bashrc
+      cd /home/gitpod/.pyenv/plugins/python-build/../.. && git pull && cd -
       pyenv install 3.7.12
-      pyenv install 3.8.12
       pyenv install 3.9.9
       pyenv install 3.10.1
-    command: echo 'start script'
+    command: |
+      source ~/.bashrc
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
