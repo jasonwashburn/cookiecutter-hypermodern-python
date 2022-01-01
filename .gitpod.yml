@@ -1,14 +1,24 @@
-# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+
 tasks:
   - init: |
       python3 -m pip install --upgrade pip
-      pip install pipx && curl -sSL https://install.python-poetry.org | python3 -
+      pip install pipx
+      pipx install cookiecutter
+      curl -sSL https://install.python-poetry.org | python3 -
       pipx install nox
       pipx inject nox nox-poetry
       pipx ensurepath
+      pyenv install 3.7.12
+      pyenv install 3.8.12
+      pyenv install 3.9.9
+      pyenv install 3.10.1
     command: echo 'start script'
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
   - port: 3000
     onOpen: open-preview
+
+vscode:
+  extensions:
+    - vtrois.gitmoji-vscode
