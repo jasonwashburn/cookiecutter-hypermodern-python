@@ -1,25 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
 
-tasks:
-  - init: |
-      python3 -m pip install --upgrade pip
-      pip install pipx
-      pipx install cookiecutter
-      curl -sSL https://install.python-poetry.org | python3 -
-      pipx install nox
-      pipx inject nox nox-poetry
-      pipx ensurepath
-      source ~/.bashrc
-      cd /home/gitpod/.pyenv/plugins/python-build/../.. && git pull && cd -
-      pyenv install 3.7.12
-      pyenv install 3.9.9
-      pyenv install 3.10.1
-    command: |
-      source ~/.bashrc
-
-# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
-ports:
-  - port: 3000
-    onOpen: open-preview
 
 vscode:
   extensions:
