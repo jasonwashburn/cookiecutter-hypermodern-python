@@ -263,6 +263,7 @@ Here is a complete list of the project variables defined by this template:
    ``email``              E-mail address of the author      katherine@example.com
    ``github_user``        GitHub username of the author     ``katherine``
    ``version``            Initial project version           ``0.0.0``
+   ``copyright_year``     The project copyright year        ``2022``
    ``license``            The project license               ``MIT``
    ``development_status`` Development status of the project ``Development Status :: 3 - Alpha``
    ====================== ================================= ===================================
@@ -384,33 +385,34 @@ For more details on these files, refer to the section :ref:`The test suite`.
    ``tests/test_main.py``                Test cases for ``__main__``
    ===================================== ===============================
 
-The project documentation is written in reStructuredText_.
+The project documentation is written in Markdown_.
 The documentation files in the top-level directory are rendered on GitHub_:
 
 .. table:: Documentation files (top-level)
    :widths: auto
 
-   ======================= ============================================
-   ``README.rst``          Project description for GitHub and PyPI
-   ``CONTRIBUTING.rst``    Contributor Guide
-   ``CODE_OF_CONDUCT.rst`` Code of Conduct
-   ``LICENSE.rst``         License
-   ======================= ============================================
+   ====================== ============================================
+   ``README.md``          Project description for GitHub and PyPI
+   ``CONTRIBUTING.md``    Contributor Guide
+   ``CODE_OF_CONDUCT.md`` Code of Conduct
+   ``LICENSE``            License
+   ====================== ============================================
 
 The files in the ``docs`` directory are
-built using :ref:`Sphinx <Documentation>` and
-hosted on :ref:`Read the Docs <Read the Docs integration>`:
+built using :ref:`Sphinx <Documentation>` and MyST_.
+The Sphinx documentation is hosted on :ref:`Read the Docs <Read the Docs integration>`:
 
 .. table:: Documentation files (Sphinx)
    :widths: auto
 
-   ====================== =======================================================
-   ``index.rst``          Main document
-   ``contributing.rst``   Contributor Guide (via include)
-   ``codeofconduct.rst``  Code of Conduct (via include)
-   ``license.rst``        License (via include)
-   ``reference.rst``      API reference
-   ====================== =======================================================
+   ===================== =======================================================
+   ``index.md``          Main document
+   ``contributing.md``   Contributor Guide (via include)
+   ``codeofconduct.md``  Code of Conduct (via include)
+   ``license.md``        License (via include)
+   ``reference.md``      API reference
+   ``usage.md``          Command-line reference
+   ===================== =======================================================
 
 The ``.github/workflows`` directory contains the :ref:`GitHub Actions workflows <GitHub Actions workflows>`:
 
@@ -559,56 +561,57 @@ refer to the section :ref:`The tests session`.
 Documentation
 -------------
 
-The project documentation is written in reStructuredText_
-and processed by the Sphinx_ documentation engine.
+The project documentation is written in Markdown_
+and processed by the Sphinx_ documentation engine using the MyST_ extension.
 
 The top-level directory contains several stand-alone documentation files:
 
-``README.rst``
+``README.md``
    This file is your main project page and displayed on GitHub and PyPI.
 
-``CONTRIBUTING.rst``
+``CONTRIBUTING.md``
    The Contributor Guide explains how other people can contribute to your project.
 
-``CODE_OF_CONDUCT.rst``
+``CODE_OF_CONDUCT.md``
    The Code of Conduct outlines the behavior
    expected from participants of your project.
    It is adapted from the `Contributor Covenant`_, version 2.0.
 
 .. _Contributor Covenant: https://www.contributor-covenant.org
 
-``LICENSE.rst``
+``LICENSE.md``
    This file contains the text of your project's license.
 
 .. note::
 
    The files above are also rendered on GitHub and PyPI.
-   Keep them in plain reStructuredText, without Sphinx extensions.
+   Keep them in plain Markdown, without MyST_ syntax extensions.
 
-The documentation files in the ``docs`` directory are built using Sphinx_:
+The documentation files in the ``docs`` directory are built using Sphinx_ and MyST_:
 
-``index.rst``
+``index.md``
    This is the main documentation page.
+   It includes the project description from ``README.md``.
    This file also defines the navigation menu,
    with links to other documentation pages.
    The *Changelog* menu entry
    links to the `GitHub Releases <GitHub Release_>`__ page of your project.
 
-``contributing.rst``
-   This file includes the Contributor Guide from ``CONTRIBUTING.rst``.
+``contributing.md``
+   This file includes the Contributor Guide from ``CONTRIBUTING.md``.
 
-``codeofconduct.rst``
-   This file includes the Code of Conduct from ``CODE_OF_CONDUCT.rst``.
+``codeofconduct.md``
+   This file includes the Code of Conduct from ``CODE_OF_CONDUCT.md``.
 
-``license.rst``
-   This file includes the license from ``LICENSE.rst``.
+``license.md``
+   This file includes the license from ``LICENSE.md``.
 
-``reference.rst``
+``reference.md``
    The API reference for your project.
    It is generated from docstrings and type annotations in the source code,
    using the autodoc_ and napoleon_ extensions.
 
-``usage.rst``
+``usage.md``
    The command-line reference for your project.
    It is generated by inspecting the click_ entry-point in your package,
    using the sphinx-click_ extension.
@@ -1191,7 +1194,7 @@ The following table gives an overview of the available Nox sessions:
    :ref:`pre-commit <The pre-commit session>` Lint with pre-commit_                 ``3.10``               ✓
    :ref:`safety <The safety session>`         Scan dependencies with Safety_        ``3.10``               ✓
    :ref:`tests <The tests session>`           Run tests with pytest_                ``3.7`` … ``3.10``     ✓
-   :ref:`typeguard <The typeguard session>`   Type-check with Typeguard_            ``3.7`` … ``3.10``     ✓
+   :ref:`typeguard <The typeguard session>`   Type-check with Typeguard_            ``3.10``               ✓
    :ref:`xdoctest <The xdoctest session>`     Run examples with xdoctest_           ``3.7`` … ``3.10``     ✓
    ========================================== ===================================== ================== =========
 
@@ -1434,13 +1437,7 @@ The typeguard session runs the test suite with runtime type-checking enabled.
 It is similar to the :ref:`tests session <The tests session>`,
 with the difference that your package is instrumented by Typeguard.
 
-You can run the session with a specific Python version.
-For example, the following command runs the session
-with the current stable release of Python:
-
-.. code:: console
-
-   $ nox --session=typeguard --python=3.10
+This session always runs with the current stable release of Python.
 
 Use the separator ``--`` to pass additional options and arguments to pytest.
 For example, the following command runs only tests for the ``__main__`` module:
@@ -2707,6 +2704,7 @@ __ https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
 .. _GitHub Release: https://help.github.com/en/github/administering-a-repository/about-releases
 .. _Hypermodern Python Cookiecutter: https://github.com/cjolowicz/cookiecutter-hypermodern-python
 .. _Jinja: https://palletsprojects.com/p/jinja/
+.. _Markdown: https://spec.commonmark.org/current/
 .. _MIT license: https://opensource.org/licenses/MIT
 .. _PEP 257: http://www.python.org/dev/peps/pep-0257/
 .. _PEP 440: https://www.python.org/dev/peps/pep-0440/

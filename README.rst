@@ -6,7 +6,7 @@ cookiecutter-hypermodern-python
 
 | |Status| |Python Version| |CalVer| |License|
 | |Read the Docs| |Tests| |Codecov|
-| |pre-commit| |Black|
+| |pre-commit| |Black| |Contributor Covenant|
 
 .. |Status| image:: https://badgen.net/badge/status/alpha/d8624d
    :target: https://badgen.net/badge/status/alpha/d8624d
@@ -35,6 +35,9 @@ cookiecutter-hypermodern-python
 .. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
    :alt: Black
+.. |Contributor Covenant| image:: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
+   :target: https://github.com/cjolowicz/cookiecutter-hypermodern-python/blob/main/CODE_OF_CONDUCT.rst
+   :alt: Contributor Covenant
 
 .. badges-end
 
@@ -70,7 +73,7 @@ Features
 - Test automation with Nox_
 - Linting with pre-commit_ and Flake8_
 - Continuous integration with `GitHub Actions`_
-- Documentation with Sphinx_ and `Read the Docs`_ using the furo_ theme
+- Documentation with Sphinx_, MyST_, and `Read the Docs`_ using the furo_ theme
 - Automated uploads to PyPI_ and TestPyPI_
 - Automated release notes with `Release Drafter`_
 - Automated dependency updates with Dependabot_
@@ -106,6 +109,7 @@ The template supports Python 3.7, 3.8, 3.9, and 3.10.
 .. _GitHub Actions: https://github.com/features/actions
 .. _Hypermodern Python: https://medium.com/@cjolowicz/hypermodern-python-d44485d9d769
 .. _isort: https://pycqa.github.io/isort/
+.. _MyST: https://myst-parser.readthedocs.io/
 .. _Nox: https://nox.thea.codes/
 .. _Poetry: https://python-poetry.org/
 .. _Prettier: https://prettier.io/

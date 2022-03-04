@@ -4,7 +4,7 @@ version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.friendly_name}}"
 authors = ["{{cookiecutter.author}} <{{cookiecutter.email}}>"]
 license = "{{cookiecutter.license}}"
-readme = "README.rst"
+readme = "README.md"
 homepage = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}"
 repository = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}"
 documentation = "https://{{cookiecutter.project_name}}.readthedocs.io"
@@ -21,7 +21,7 @@ classifiers = [
 Changelog = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/releases"
 
 [tool.poetry.dependencies]
-python = ">=3.7"
+python = "^3.7"
 click = ">=8.0.1"
 
 [tool.poetry.dev-dependencies]
@@ -48,6 +48,7 @@ sphinx-autobuild = ">=2021.3.14"
 sphinx-click = ">=3.0.2"
 typeguard = ">=2.13.3"
 xdoctest = {extras = ["colors"], version = ">=0.15.10"}
+myst-parser = {version = ">=0.16.1"}
 
 [tool.poetry.scripts]
 {{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.__main__:main"
